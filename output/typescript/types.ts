@@ -9546,6 +9546,30 @@ export interface IndicesMigrateToDataStreamRequest extends RequestBase {
 export interface IndicesMigrateToDataStreamResponse extends AcknowledgedResponseBase {
 }
 
+export interface IndicesModifyDataStreamAction {
+  add_backing_index?: IndicesModifyDataStreamAddBackingIndexAction
+  remove_backing_index?: IndicesModifyDataStreamRemoveBackingIndexAction
+}
+
+export interface IndicesModifyDataStreamAddBackingIndexAction {
+  index: IndexName
+  data_stream: DataStreamName
+}
+
+export interface IndicesModifyDataStreamRemoveBackingIndexAction {
+  index: IndexName
+  data_stream: DataStreamName
+}
+
+export interface IndicesModifyDataStreamRequest extends RequestBase {
+  body?: {
+    actions: IndicesModifyDataStreamAction[]
+  }
+}
+
+export interface IndicesModifyDataStreamResponse extends AcknowledgedResponseBase {
+}
+
 export interface IndicesOpenRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
